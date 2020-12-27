@@ -1,13 +1,15 @@
 from django import forms
 
 from MyApp.models import Comments
+from snowpenguin.django.recaptcha3.fields import ReCaptchaField
 
 
 class CommentForm(forms.ModelForm):
+    captcha = ReCaptchaField()
 
     class Meta:
         model = Comments
-        fields = ('text', )
+        fields = ('text', 'captcha' )
         widgets = {
             'text': forms.Textarea({
                 'placeholder': 'Ваш комментарий', 'width': '100%',

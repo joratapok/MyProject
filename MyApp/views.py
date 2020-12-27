@@ -1,10 +1,7 @@
 from django.contrib import messages
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, FormView
-from django.views.generic.base import View
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
+from django.shortcuts import redirect
+from django.views.generic import ListView, CreateView
 from MyApp.forms import CommentForm
 from MyApp.models import Comments
 
@@ -12,6 +9,7 @@ from MyApp.models import Comments
 class CommentsView(ListView):
     model = Comments
     queryset = Comments.objects.order_by('-date')[:8]
+    paginate_by = 6
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,8 +20,8 @@ class CommentsView(ListView):
 class AddCommentView(CreateView):
     model = Comments
     fields = ['text']
-    permission_classes = [IsAuthenticated]
     success_url = '/'
+
 
     def form_valid(self, form):
         if self.request.user.is_authenticated:

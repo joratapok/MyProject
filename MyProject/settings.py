@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
+    'snowpenguin.django.recaptcha3',
 
 
     'MyApp',
@@ -104,7 +105,6 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         #'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-
     ]
 }
 
@@ -156,3 +156,8 @@ ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Время блокировки поль�
 ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_EMAIL_VERIFICATION=False
+
+
+RECAPTCHA_PUBLIC_KEY = '6LehfxYaAAAAAGz6NGPoI03A0vhiXsCAutn13x3W'
+RECAPTCHA_DEFAULT_ACTION = 'generic'
+RECAPTCHA_SCORE_THRESHOLD = 0.5

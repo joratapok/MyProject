@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount static %}
+
+{% block title %}Sign In{% endblock %}
+
+{% block content %}
+
+<div class="inlogin">
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+    {% csrf_token %}
+    
+    {% if redirect_field_value %}
+    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+    {% endif %}
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" autocomplete="username" name="login" maxlength="150" required id="id_login">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required id="id_password">
+
+            <button class="primaryAction" type="submit">{% trans "Sign In" %}</button>
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-warning">
+                    <div class="alert-warning-box">
+                        <ul class="errorlist nonfield">
+                            {{ form.non_field_errors }}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+      
+        </div>
+    </form>
+
+  
+
+    <div class="social">
+        <div class="title__social">Войти с помощью:</div>
+            <div class="body__social">
+                <a href="{% provider_login_url 'vk' method='oauth2' %}">
+                    <img class="vk_logo" src="{% static 'MyApp/img/ikons/vk.png' %}" alt="">
+                </a>
+            </div>
+        </div>
+
+        <div class="cancel-container">
+            <a href="{% url 'comment_list' %}">
+                <div class="cancel-div">
+                    Cancel
+                </div>
+            </a>
+
+            <a href="{{ signup_url }}">
+                <div class="signup-div">
+                    Sign Up
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

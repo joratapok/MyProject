@@ -1,0 +1,46 @@
+{% load static %}
+<!--header-->
+<header class="header">
+    <div class="container">
+        <div class="header__body">
+            <a href="{% url 'comment_list' %}" class="header__logo">
+                <img src="{% static 'MyApp/img/moon.png' %}">
+            </a>
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <nav class="header__menu">
+                <ul class="header__list">
+                    <li>
+                        <a href="{% url 'comment_list' %}" class="header__link">Главная</a>
+                    </li>
+                    <li>
+                        <a class="header__link">Вторая</a>
+                    </li>
+                    <li>
+                        <a class="header__link">Третья</a>
+                    </li>
+                    <li>
+                        <a class="header__link">Четвертая</a>
+                    </li>
+                    <li>
+                        <a href="/" class="header__link">Пятая</a>
+                    </li>
+                    <li>
+
+                        {% if user.is_authenticated %}
+                            <span>Привет, {{ user.username }}&nbsp&nbsp&nbsp</span>
+                            <a href="{% url 'account_logout' %}" class="header__link">Выход </a>
+                        {% else %}
+                            <a href="{% url 'account_login' %}" class="header__link">Войти</a> <span>&nbsp или &nbsp</span>
+                            <a href="{% url 'account_signup' %}" class="header__link">Зарегестрироваться</a>
+                        {% endif %}
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
+<div class="blank-box"></div>
+<!-- // header-->

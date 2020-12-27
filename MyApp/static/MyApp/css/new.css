@@ -52,7 +52,7 @@ button::-moz-focus-inner {
 
 a, a:visited {
   text-decoration: none;
-  color: #000;
+
 }
 
 a:hover {
@@ -84,8 +84,8 @@ html, body {
 #myBtn {
   display: none;
   position: fixed;
-  bottom: 20px;
-  right: 30px;
+  bottom: 80px;
+  right: 15px;
   z-index: 9;
   font-size: 12px;
   font-weight: bold;
@@ -171,6 +171,25 @@ html, body {
   font-size: 18px;
   text-decoration: none;
 }
+nav ul li span {
+  color: #d5ddef;
+  font-size: 16px;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all .5s;
+}
+nav ul li a:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+.blank-box {
+  height: 50px;
+}
+
 /* -------------------/MENU--------------------- */
 
 /* -------------------CONTENT------------------- */
@@ -183,7 +202,7 @@ html, body {
 }
 
 .content-body {
-  padding: 100px 0 0 0;
+  padding: 60px 0 0 0;
 }
 
 .content {
@@ -411,6 +430,9 @@ html, body {
   display: flex;
   justify-content: center;
 }
+.container__form-text p {
+  font-size: 20px;
+}
 .button__form-text {
   width: 90%;
 }
@@ -418,6 +440,7 @@ html, body {
   float: right;
   background-color: #4c394f;
   border: none;
+  font-size: 20px;
   color: white;
   padding: 16px 32px;
   text-decoration: none;
@@ -495,7 +518,6 @@ html, body {
 .ava__message {
   border-right: 1px solid #000;
   width: 20%;
-  height: 120px;
   text-align: center;
 }
 .ava__message img {
@@ -780,6 +802,7 @@ html, body {
 
 }
 .cancel-div {
+  text-align: center;
   font-size: 15px;
   background: #4c394f;
   color: #fff;
@@ -789,6 +812,7 @@ html, body {
 }
 
 .signup-div {
+  text-align: center;
   font-size: 15px;
   background: #4c394f;
   color: #fff;

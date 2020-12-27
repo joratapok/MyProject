@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static recaptcha3 %}
+<html lang='en'>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="{% static 'MyApp/css/new.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'MyApp/css/libs/animate.css' %}">
+		<title>{% block title %} {% endblock title %}</title>
+        {% recaptcha_init %}
+        {% recaptcha_ready action_name='homepage' %}
+	</head>
+	<body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">
+			<img src="{% static 'MyApp/img/ikons/up.png' %}" class="up_but" alt="">
+		</button>
+		<div class="wrapper">
+
+			{% include 'include/navbar.html' %}
+
+            {% block content %} {% endblock content %}
+
+            {% include 'include/footer.html' %}
+
+        </div>
+    </body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="{% static 'MyApp/js/script.js' %}"></script>
+	<script src="{% static 'MyApp/js/wow.js' %}"></script>
+	<script>new WOW().init();</script>
+
+</html>
