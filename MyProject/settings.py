@@ -16,7 +16,6 @@ from MyProject.secret import *
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -28,7 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,13 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'rest_framework',
+    # 'rest_framework',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.vk',
     'snowpenguin.django.recaptcha3',
-
 
     'MyApp',
 ]
@@ -86,24 +83,21 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'MyProject.wsgi.application'
 
-EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-
 DEFAULT_FROM_EMAIL = 'ёжик'
 
-LOGIN_REDIRECT_URL = '/'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
 
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        #'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
@@ -126,7 +120,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -140,7 +133,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -148,15 +140,13 @@ STATIC_URL = '/static/'
 
 SITE_ID = 1
 
-
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 5 # Определяет срок действия писем с подтверждением по электронной почте
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory' # Когда установлено «mandatory», пользователь блокируется от входа, пока адрес электронной почты не будет подтвержден.
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 2 # Количество попыток не удачного ввода логина и пароля. После пользователь блокируется.
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300 # Время блокировки пользователя в секундах после количества не удачного ввода логина и пароля.
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 5  # Определяет срок действия писем с подтверждением по электронной почте
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Когда установлено «mandatory», пользователь блокируется от входа, пока адрес электронной почты не будет подтвержден.
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 2  # Количество попыток не удачного ввода логина и пароля. После пользователь блокируется.
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300  # Время блокировки пользователя в секундах после количества не удачного ввода логина и пароля.
 ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = '/'
-SOCIALACCOUNT_EMAIL_VERIFICATION=False
-
+SOCIALACCOUNT_EMAIL_VERIFICATION = False
 
 RECAPTCHA_PUBLIC_KEY = '6LehfxYaAAAAAGz6NGPoI03A0vhiXsCAutn13x3W'
 RECAPTCHA_DEFAULT_ACTION = 'generic'

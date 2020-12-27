@@ -10,7 +10,7 @@
     <div class="container">
         <div class="content">
 
-<!-------------------------Title Greeting------------------------->
+<!-------------------------Title Greeting-------------------->
 
             <div class="greeting__row row">
                 <div class="title__row title">
@@ -83,7 +83,7 @@
                 </div>
             </div>
 
-<!-------------------------Content Smoke------------------------->
+<!-------------------------Content Smoke--------------------->
 
             <div class="row__content row">
                 <div class="smoke__row column">
@@ -132,7 +132,7 @@
                 </div>
             </div>
 
-<!-------------------------Comment FORM------------------------->
+<!-------------------------Comment FORM---------------------->
 
             <div class="comment-form">
                 <form action="{% url 'add_comment' %}" method="post">
@@ -177,7 +177,7 @@
                 {% endif %}
             </div>
 
-<!-------------------------Comments------------------------->
+<!-------------------------Comments-------------------------->
 
             {% for com in comments_list %}
             <div class="message">
@@ -194,22 +194,37 @@
             </div>
             {% endfor %}
 
+<!-------------------------Pagination------------------------->
+
             <div class="pagination">
-                <span class="step-links">
-                    {% if page_obj.has_previous %}
-                        <a href="?page=1">&laquo; first</a>
-                        <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-                    {% endif %}
+                <div class="title__pagination">
+                    Посмотреть еще комментариев
+                </div>
+                <div class="body__pagination">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1">
+                                <img src="{% static 'MyApp/img/ikons/left2.png' %}" alt="first">
+                            </a>
+                            <a href="?page={{ page_obj.previous_page_number }}">
+                                <img src="{% static 'MyApp/img/ikons/left1.png' %}" alt="previous">
+                            </a>
+                        {% endif %}
 
-                    <span class="current">
-                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        <span class="current">
+                            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}">
+                                <img src="{% static 'MyApp/img/ikons/rigt1.png' %}" alt="next">
+                            </a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}">
+                                <img src="{% static 'MyApp/img/ikons/right2.png' %}" alt="last">
+                            </a>
+                        {% endif %}
                     </span>
-
-                    {% if page_obj.has_next %}
-                        <a href="?page={{ page_obj.next_page_number }}">next</a>
-                        <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
-                    {% endif %}
-                </span>
+                </div>
             </div>
 
         </div>

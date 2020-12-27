@@ -1,7 +1,7 @@
 from django.contrib import messages
 
 from django.shortcuts import redirect
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, TemplateView
 from MyApp.forms import CommentForm
 from MyApp.models import Comments
 
@@ -9,12 +9,15 @@ from MyApp.models import Comments
 class CommentsView(ListView):
     model = Comments
     queryset = Comments.objects.order_by('-date')[:8]
-    paginate_by = 6
+    paginate_by = 3
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = CommentForm
         return context
+
+class FishView(TemplateView):
+    template_name = 'MyApp/fishpage.html'
 
 
 class AddCommentView(CreateView):
