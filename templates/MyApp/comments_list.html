@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='en'>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, shrink-to-fit=no">
+		<link rel="stylesheet" type="text/css" href="{% static 'MyApp/css/new.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'MyApp/css/libs/animate.css' %}">
+		<title>Title</title>
+	</head>
+	<body>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">
+			<img src="{% static 'MyApp/img/ikons/up.png' %}" class="up_but" alt="">
+		</button>
+		<div class="wrapper">
+
+			<!--header-->
+			<header class="header">
+				<div class="container">
+					<div class="header__body">
+						<a href="#" class="header__logo">
+							<img src="{% static 'MyApp/img/moon.png' %}">
+						</a>
+						<div class="header__burger">
+							<span></span>
+						</div>
+						<nav class="header__menu">
+							<ul class="header__list">
+								<li>
+									<a class="header__link">Главная</a>
+								</li>
+								<li>
+									<a class="header__link">Вторая</a>
+								</li>
+								<li>
+									<a class="header__link">Третья</a>
+								</li>
+								<li>
+									<a class="header__link">Четвертая</a>
+								</li>
+								<li>
+									<a href="/" class="header__link">Пятая</a>
+								</li>
+                                <li>
+
+                                    {% if user.is_authenticated %}
+                                        Привет, {{ user.username }}
+                                        <a href="{% url 'account_logout' %}" class="header__link">Выход </a>
+                                    {% else %}
+                                        <a href="{% url 'account_login' %}" class="header__link">Войти</a> или
+                                        <a href="{% url 'account_signup' %}" class="header__link">Зарегестрироваться</a>
+                                    {% endif %}
+
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+			<!-- // header-->
+
+			<!--Content-->
+			<div class="content-body">
+				<div class="container">
+					<div class="content">
+						<div class="greeting__row row">
+							<div class="title__row title">
+								Привет! Это тестовая поляна для эксперементов
+							</div>
+							<div class="subtitle__row subtitle">
+								На этом сайте я планирую размещать полезные ссылки для веб-разработки, а так же отрабатывать на практике навыки разработки интернет-ресурсов
+							</div>
+						</div>
+						<div class="but3__row row">
+							<div class="but3-column__row but3">
+								<div class="image__but3 wow tada" data-wow-iteration="1">
+									<img src="{% static 'MyApp/img/books-min.png' %}">
+								</div>
+								<div class="title__but3 title">
+									Ссылочная
+								</div>
+								<div class="subtitle__but">
+									Страничка со ссылками на полезные ресурсы. Заходи не стесняйся
+								</div>
+								<div class="text__but3">
+
+								</div>
+								<div class="button-wrapper__but3">
+									<div class="buttton__but3">
+										<a href="#" class="btn btn1">Ссылки</a>
+									</div>
+								</div>
+							</div>
+							<div class="but3-column__row but3">
+								<div class="image__but3 wow tada" data-wow-delay="1s">
+									<img class="img_2" src="{% static 'MyApp/img/desk.png' %}">
+								</div>
+								<div class="title__but3 title">
+									Доска
+								</div>
+								<div class="subtitle__but">
+									На доске можно что-нибудь написать... Ну со временем можно будет
+								</div>
+								<div class="text__but3">
+
+								</div>
+								<div class="button-wrapper__but3">
+									<div class="buttton__but3">
+										<a href="#" class="btn btn1">Доска</a>
+									</div>
+								</div>
+							</div>
+							<div class="but3-column__row but3">
+								<div class="image__but3 wow bounce" data-wow-delay="2s">
+									<img class="img_3" src="{% static 'MyApp/img/notepad.png' %}">
+								</div>
+								<div class="title__but3 title">
+									Авторизация
+								</div>
+								<div class="subtitle__but">
+									Что бы написать на доске или добавить ссылку придется авторизоваться...
+								</div>
+								<div class="text__but3">
+
+								</div>
+								<div class="button-wrapper__but3">
+									<div class="buttton__but3">
+										<a href="account_login" class="btn btn1">Авторизация</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row__content row">
+							<div class="smoke__row column">
+								<div class="title__column title">
+									Добавим немного контента
+								</div>
+								<div class="subtitle__column subtitle">
+									Я стараюсь держать себя в руках и не вставлять свистелки и перделки в количествах, превосходящих здравый смысл
+								</div>
+								<div class="content__column">
+									Справа должен был выехать красный дым к тому моменту как вы доберетесь до этих строк, чтож надеюсь он там...
+								</div>
+								<div class="button__column">
+									<div class="button-wrapper__column">
+										<div class="buttton__but3">
+											<a href="#" class="btn btn1">Анимация</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="img__column wow fadeInRightBig" data-wow-offset="400">
+								<img src="{% static 'MyApp/img/smoke.png' %}">
+							</div>
+						</div>
+						<div class="row__content row">
+							<div class="img__column wow fadeInLeftBig" data-wow-offset="400">
+								<img src="{% static 'MyApp/img/smoke.png' %}">
+							</div>
+							<div class="smoke__row column">
+								<div class="title__column title">
+									Добавим немного контента
+								</div>
+								<div class="subtitle__column subtitle">
+									Я стараюсь держать себя в руках и не вставлять свистелки и перделки в количествах, превосходящих здравый смысл
+								</div>
+								<div class="content__column">
+									Справа должен был выехать красный дым к тому моменту как вы доберетесь до этих строк, чтож надеюсь он там...
+								</div>
+								<div class="button__column">
+									<div class="button-wrapper__column">
+										<div class="buttton__but3">
+											<a href="#" class="btn btn1">Анимация</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+                        <div class="comment-form">
+
+                            <form action="{% url 'add_comment' %}" method="post">
+                                {% csrf_token %}
+
+                                <div class="form-text">
+                                    <div class="label__form-text">
+                                        <label for="id_text">Оставить комментарий</label>
+                                    </div>
+
+                                        <div class="input__form-text">
+                                            {{ form.text }}
+                                        </div>
+                                    </div>
+
+                                <div class="container__form-text">
+                                    <div class="button__form-text">
+                                        <button type="submit" class="comment-button">
+                                            Отправить
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+
+                            {% if messages %}
+                                <ul class="messages">
+                                    {% for message in messages %}
+                                        <div class="alert-warning">
+                                            <div class="alert-warning-box">
+                                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+
+                        </div>
+
+                        {% for com in comments_list %}
+                        <div class="message">
+                            <div class="username__message username">
+                                <div class="name__username">{{ com.owner }}</div>
+                                <div class="date__username">{{ com.date }}</div>
+                            </div>
+                            <div class="body__message">
+                                <div class="ava__message">
+                                    <img src="{% static 'MyApp/img/batman.png' %}" alt="">
+                                </div>
+                                <div class="text__message">{{ com.text }}</div>
+                            </div>
+					    </div>
+                        {% endfor %}
+
+					</div>
+				</div>
+			</div>
+			<!-- // Content-->
+
+		</div>
+			<!--Footer-->
+		<div class="footer">
+			<div class="footer-content">
+				<div class="footer-section about">
+
+
+                    <div class="comment-field">
+
+
+
+                    </div>
+
+
+				</div>
+				<div class="footer-section links">
+
+				</div>
+				<div class="footer-section contact-form">
+
+				</div>
+			</div>
+			<div class="footer-bottom">
+				&copy; sameadress.ru | Designed by Jora
+			</div>
+		</div>
+		<!-- // Footer-->
+
+
+
+	</body>
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="{% static 'MyApp/js/script.js' %}"></script>
+	<script src="{% static 'MyApp/js/wow.js' %}"></script>
+	<script>new WOW().init();</script>
+
+</html>
