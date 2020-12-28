@@ -59,6 +59,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'MyProject.urls'
 
+
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -87,7 +89,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'ёжик'
+DEFAULT_FROM_EMAIL = 'yosik'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases

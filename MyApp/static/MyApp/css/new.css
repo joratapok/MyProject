@@ -728,6 +728,7 @@ nav ul li a:hover {
   width: 60%; /* Could be more or less, depending on screen size */
   height: auto;
   padding-top: 20px;
+  box-shadow: 0px 0px 18px 4px rgba(34, 60, 80, 0.3);
 }
 
 
@@ -741,11 +742,11 @@ nav ul li a:hover {
 }
 
 .inlogin input {
+  font-size: 15px;
   width: 95%;
   padding: 12px 20px;
   margin: 10px 20px 10px 20px;
   display: inline-block;
-
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
@@ -753,6 +754,7 @@ nav ul li a:hover {
 .inlogin button {
   background-color: #4c394f;
   color: white;
+  font-size: 18px;
   padding: 14px 20px;
   margin: 25px 20px 8px 20px;
   border: none;
@@ -772,19 +774,20 @@ nav ul li a:hover {
 }
 
 #id_remember {
-  width: 40px;
+  width: 30px;
 }
 
 .title__social, .body__social {
   color: black;
   text-align: center;
-  margin: 15px 0 0 0;
-  font-size: 15px;
+  margin: 15px 10px 0 10px;
+  font-size: 35px;
 }
 
 .body__social {
+  font-size: 18px;
   text-align: center;
-  margin: 10px 0 10px 0;
+  margin: 10px 10px 10px 10px;
 }
 
 .vk_logo {
