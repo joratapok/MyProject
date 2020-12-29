@@ -19,6 +19,9 @@ class CommentsView(ListView):
 class FishView(TemplateView):
     template_name = 'MyApp/fishpage.html'
 
+class LinksView(TemplateView):
+    template_name = 'MyApp/links.html'
+
 
 class AddCommentView(CreateView):
     model = Comments
