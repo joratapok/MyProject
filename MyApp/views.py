@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, TemplateView
 from MyApp.forms import CommentForm
-from MyApp.models import Comments
+from MyApp.models import Comments, Links, LinksThemes
 
 
 class CommentsView(ListView):
@@ -18,6 +18,17 @@ class CommentsView(ListView):
 
 class FishView(TemplateView):
     template_name = 'MyApp/fishpage.html'
+
+
+class LinksView(ListView):
+    model = Links
+    queryset = Links.objects.all()
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['themes'] = LinksThemes.objects.all()
+        return context
+   
 
 
 class AddCommentView(CreateView):
@@ -48,3 +59,9 @@ class AddCommentView(CreateView):
     #         return HttpResponse(status=400)
     #
     #
+class AddLinkView(CreateView):
+    model = Links
+    fields = ['description', 'link']
+    success_url = 'links'
+
+
