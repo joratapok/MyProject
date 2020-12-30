@@ -208,7 +208,7 @@ nav ul li a:hover {
 .content {
   border-radius: 10px;
   overflow: hidden;
-  padding: 40px 0 0 0;
+  padding: 10px 0 0 0;
 }
 
 .row {
@@ -861,6 +861,7 @@ nav ul li a:hover {
 .title__row {
   text-align: center;
   font-size: 30px;
+  margin: 20px 0 0 0;
 }
 .body__row {
   width: 100%;
@@ -868,13 +869,17 @@ nav ul li a:hover {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 100%;
+  width: 95%;
+  margin: auto;
   border: 1px solid #ddd;
+  box-shadow: 0px 0px 18px 4px rgba(34, 60, 80, 0.3);
+  border-radius: 8px;
 }
 
 th, td {
+  font-size: 19px;
   text-align: center;
-  padding: 16px;
+  padding: 10px;
 }
 
 th:first-child, td:first-child {
@@ -889,10 +894,3 @@ tr:nth-child(odd) {
   background-color: #fff
 }
 
-.fa-check {
-  color: green;
-}
-
-.fa-remove {
-  color: red;
-}

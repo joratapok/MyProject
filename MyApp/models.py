@@ -15,9 +15,33 @@ class Comments(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse('comment_list')
-
-
-
     class Meta:
         verbose_name = 'Комментарий'
         verbose_name_plural = 'Коментарии'
+
+
+class LinksThemes(models.Model):
+    theme = models.CharField(max_length=100)
+
+    def __str__(self):
+        return f'{self.theme}'
+
+    class Meta:
+        verbose_name = 'Тема для ссылки'
+        verbose_name_plural = 'Темы для ссылок'
+
+
+class Links(models.Model):
+
+    draft = models.BooleanField(default=True)
+    description = models.CharField(max_length=250)
+    link = models.CharField(max_length=250)
+    theme = models.ForeignKey(LinksThemes, on_delete=models.CASCADE, 
+        null=True, related_name='child')
+    
+    def __str__(self):
+        return f'{self.description}'
+
+    class Meta:
+        verbose_name = 'Ссылка'
+        verbose_name_plural = 'Ссылки'

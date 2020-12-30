@@ -1,6 +1,6 @@
 from django import forms
 
-from MyApp.models import Comments
+from MyApp.models import Comments, Links
 from snowpenguin.django.recaptcha3.fields import ReCaptchaField
 
 
@@ -20,3 +20,16 @@ class CommentForm(forms.ModelForm):
         labels = {
             'text': ''
         }
+
+class LinkForm(forms.ModelForm):
+    captcha = ReCaptchaField()
+
+    class Meta:
+        model = Links
+        fields = ('description', 'link' )
+        widgets = {
+
+            'description': forms.TextInput(attrs={'class': 'special'}),
+            'link': forms.TextInput(attrs={'class': 'special'})
+        }
+        

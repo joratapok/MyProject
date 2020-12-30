@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} MyLinks {% endblock title %}
+
+{% block content %}
+<!--Content-->
+<div class="content-body">
+    <div class="container">
+        <div class="content">
+
+<!-------------------------Title Greeting-------------------->
+
+            <div class="greeting__row row">
+                {% for theme in themes %}
+                <div class="title__row">{{ theme.theme }}</div>
+                <div class="body__row">
+
+                    <table>
+                        <tr>
+                            <th style="width:70%">Описание</th>
+                            <th>Ссылка</th>
+                        </tr>
+
+                        {% for link in theme.child.all %}
+                        <tr>
+                            <td>{{ link.description }}</td>
+                            <td><a target="_blank" href="{{ link.link }}">{{ link.link }}</a></td>
+                        </tr>
+                        {% endfor %}
+
+                    </table>
+                </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<!-- // Content-->
+
+{% endblock content %}
+
+
+
+
+
