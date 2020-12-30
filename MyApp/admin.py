@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from MyApp.models import Comments, Links, LinksThemes
+
+from MyApp.models import Comments, Links, LinksThemes, Profile
+
 
 
 @admin.register(Comments)
@@ -16,3 +18,9 @@ class LinksAdmin(admin.ModelAdmin):
 @admin.register(LinksThemes)
 class ThemeAdmin(admin.ModelAdmin):
     list_display = ('theme',)
+
+    @admin.register(Profile)
+class ProfileRegisterAdmin(admin.ModelAdmin):
+    list_display = ('user', 'photo')
+
+
