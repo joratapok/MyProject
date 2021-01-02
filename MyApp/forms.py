@@ -1,5 +1,7 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.forms import ModelForm
 
 from MyApp.models import Comments, Profile, Links
 
@@ -13,7 +15,7 @@ class UserEditForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ('photo')
+        fields = ('photo', )
 
 
 class CommentForm(forms.ModelForm):
@@ -44,4 +46,15 @@ class LinkForm(forms.ModelForm):
             'description': forms.TextInput(attrs={'class': 'special'}),
             'link': forms.TextInput(attrs={'class': 'special'})
         }
-        
+
+class EditUserForm(ModelForm):
+
+    class Meta:
+        model = User
+        # fields = UserCreationForm.Meta.fields + ('photo', )
+        fields = ('first_name', 'last_name', 'username' )
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('photo', 'country')

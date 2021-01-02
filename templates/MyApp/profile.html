@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+
+<div class="inlogin">
+
+    <form class="login" enctype="multipart/form-data" method="POST" action="{% url 'update_profile' %}">
+    {% csrf_token %}
+
+        <div class="container">
+{#            {{ form.as_p }}#}
+{#            {{ form2.as_p }}#}
+
+            <div class="title__social">Профиль {{ user.username }}</div>
+            <div class="ava-profile">
+                <img src="{{ user.profile.photo.url }}" width="120px">
+            </div>
+            <div class="ava-profile">
+                <input type="file" name="photo" accept="image/*" class="inputfile" id="id_photo">
+                <label for="id_photo">Сменить аватар</label>
+            </div>
+
+
+            <label for="id_country"><b>Страна</b></label>
+            <input type="text" name="country" maxlength="100" value="{{ user.profile.country }}"  id="id_country">
+
+            <label for="id_username"><b>Логин на сайте</b></label>
+            <input type="text" value="{{ user.username }}" name="username" maxlength="150" required id="id_username">
+
+            <label for="id_first_name"><b>Имя</b></label>
+            <input type="text" value="{{ user.first_name }}" name="first_name" maxlength="150" id="id_first_name">
+
+            <label for="id_last_name"><b>Фамилия</b></label>
+            <input type="text" value="{{ user.last_name }}" name="last_name" maxlength="150" id="id_last_name">
+
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-warning">
+                    <div class="alert-warning-box">
+                        <ul class="errorlist nonfield">
+                            {{ form.non_field_errors }}
+                        </ul>
+                    </div>
+                </div>
+            {% endif %}
+
+
+
+            <button type="submit" class="comment-button">
+                Отправить
+            </button>
+
+        </div>
+    </form>
+
+
+
+    <div class="social">
+
+        <div class="cancel-container">
+            <a href="{% url 'comment_list' %}">
+                <div class="cancel-div">
+                    Назад
+                </div>
+            </a>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -13,10 +13,10 @@
 <!-------------------------Title Greeting-------------------->
 
             <div class="greeting__row row">
-                <div class="title__row title">
+                <div class="title__row">
                     Привет! Это тестовая поляна для эксперементов
                 </div>
-                <div class="subtitle__row subtitle">
+                <div class="subtitle__row">
                     На этом сайте я планирую размещать полезные ссылки для веб-разработки, а так же отрабатывать на практике навыки разработки интернет-ресурсов
                 </div>
             </div>
@@ -156,6 +156,7 @@
 
 <!-------------------------Comments-------------------------->
 
+
             {% for com in comments_list %}
             <div class="message">
                 <div class="username__message username">
@@ -164,7 +165,11 @@
                 </div>
                 <div class="body__message">
                     <div class="ava__message">
+                        {% if com.owner.profile.photo.url != '' %}
+                        <img src="{{ com.owner.profile.photo.url }}" alt="">
+                        {% else %}
                         <img src="{% static 'MyApp/img/batman.png' %}" alt="">
+                        {% endif %}
                     </div>
                     <div class="text__message">{{ com.text }}</div>
                 </div>

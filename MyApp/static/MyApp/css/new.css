@@ -522,7 +522,8 @@ nav ul li a:hover {
   text-align: center;
 }
 .ava__message img {
-  width: 120px;
+  max-width: 120px;
+  max-height: 120px;
 }
 
 .text__message{
@@ -707,7 +708,7 @@ nav ul li a:hover {
   }
 }
 @media (max-width: 630px) {
-  .title__row {
+  .title__linkrow {
     font-size: 30px;
     width: 90%;
     font-weight: bold;
@@ -796,7 +797,6 @@ nav ul li a:hover {
   width: 50px;
 }
 
-
 .alert-warning {
   display: flex;
   justify-content: center;
@@ -815,6 +815,7 @@ nav ul li a:hover {
   height: 50px;
   padding: 15px 0 0 0;
 }
+
 
 /* ---cancel Button--- */
 .cancel-container {
@@ -859,13 +860,59 @@ nav ul li a:hover {
   font-size: 22px;
 }
 
+/* -----------------PROFILE--------------------- */
+
+.ava-profile {
+  width: 100%;
+  text-align: center;
+}
+
+.ava-profile img {
+  margin: 10px 0 0 0;
+  max-width: 120px;
+  max-height: 120px;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: black;
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 0;
+
+
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #4c394f;
+  color: #cccccc;
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
 /* -----------------LINKS--------------------- */
-.title__row {
+.title__linkrow {
   text-align: center;
   font-size: 30px;
   margin: 20px 0 0 0;
 }
-.body__row {
+.body__linkrow {
   width: 100%;
 }
 table {
@@ -895,4 +942,11 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #fff
 }
-
+.testing {
+  width: 300px;
+  height: 300px;
+  background-color: yellow;
+}
+.testing img {
+  width: 50px;
+}

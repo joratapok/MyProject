@@ -30,7 +30,8 @@
 
                         {% if user.is_authenticated %}
                             <span>Привет, {{ user.username }}&nbsp&nbsp&nbsp</span>
-                            <a href="{% url 'account_logout' %}" class="header__link">Выход </a>
+                            <a href="{% url 'account_logout' %}" class="header__link">Выход &nbsp&nbsp&nbsp </a>
+                            <a href="{% url 'update_profile' %}" class="header__link">Профиль</a>
                         {% else %}
                             <a href="{% url 'account_login' %}" class="header__link">Войти</a> <span>&nbsp или &nbsp</span>
                             <a href="{% url 'account_signup' %}" class="header__link">Зарегестрироваться</a>

@@ -19,8 +19,8 @@ class LinksAdmin(admin.ModelAdmin):
 class ThemeAdmin(admin.ModelAdmin):
     list_display = ('theme',)
 
-    @admin.register(Profile)
+@admin.register(Profile)
 class ProfileRegisterAdmin(admin.ModelAdmin):
-    list_display = ('user', 'photo')
+    list_display = ('master', 'photo')
 
 
