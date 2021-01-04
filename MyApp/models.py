@@ -41,7 +41,6 @@ class LinksThemes(models.Model):
 
 
 class Links(models.Model):
-
     draft = models.BooleanField(default=True)
     description = models.CharField(max_length=250)
     link = models.CharField(max_length=250)

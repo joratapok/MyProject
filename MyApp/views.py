@@ -4,19 +4,20 @@ from django.http import HttpResponseRedirect
 
 from django.shortcuts import redirect
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView
-from MyApp.forms import CommentForm, EditUserForm, ProfileForm
+from MyApp.forms import CommentForm, EditUserForm, ProfileForm, NewLinkForm
 from MyApp.models import Comments, Links, LinksThemes, Profile
 
 
 class CommentsView(ListView):
     model = Comments
-    queryset = Comments.objects.order_by('-date')[:8]
-    paginate_by = 3
+    queryset = Comments.objects.order_by('-date')
+    paginate_by = 5
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = CommentForm
         return context
+
 
 class FishView(TemplateView):
     template_name = 'MyApp/fishpage.html'
@@ -28,16 +29,6 @@ class UpdateProfileView(UpdateView):
     second_form_class = ProfileForm
     template_name = 'MyApp/profile.html'
     success_url = '/'
-
-    # def get_context_data(self, **kwargs):
-    #     context = super(UpdateProfileView, self).get_context_data(**kwargs)
-    #     #context['active_client'] = True
-    #     if 'form' not in context:
-    #         context['form'] = self.form_class(self.request.GET, instance=self.request.user)
-    #     if 'form2' not in context:
-    #         context['form2'] = self.second_form_class(self.request.GETj, instance=self.request.user.profile)
-    #     context['active_client'] = True
-    #     return context
 
     def get(self, request, **kwargs):
         self.object = User.objects.get(pk=self.request.user.pk)
@@ -74,13 +65,29 @@ class UpdateProfileView(UpdateView):
 
 class LinksView(ListView):
     model = Links
-    queryset = Links.objects.all()
+    queryset = Links.objects.filter(draft=False)
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['themes'] = LinksThemes.objects.all()
+        context['form'] = NewLinkForm
         return context
-   
+
+
+class AddLinkView(CreateView):
+    model = Links
+    fields = ['description', 'link', 'theme']
+    success_url = '/links'
+
+    def form_valid(self, form):
+        if self.request.user.is_authenticated:
+            print(form.cleaned_data['theme'])
+            messages.add_message(self.request, messages.INFO,
+                                'Ваша ссылка будет опубликована после проверки администратора', extra_tags=form.cleaned_data['theme'])
+            return super().form_valid(form)
+        else:
+            messages.error(self.request, 'Что бы добавлять ссылки необходимо автороизоваться', extra_tags=form.cleaned_data['theme'])
+            return redirect("/links")
 
 
 class AddCommentView(CreateView):
@@ -88,13 +95,12 @@ class AddCommentView(CreateView):
     fields = ['text']
     success_url = '/'
 
-
     def form_valid(self, form):
         if self.request.user.is_authenticated:
             form.instance.owner = self.request.user
             return super().form_valid(form)
         else:
-            messages.add_message(self.request, messages.ERROR, 'Необходимо авторизоваться что бы оставлять комменты')
+            messages.error(self.request, 'Необходимо авторизоваться что бы оставлять комменты', extra_tags='auth')
             return redirect("/")
 
 
@@ -109,11 +115,3 @@ class AddCommentView(CreateView):
     #         return redirect('/')
     #     else:
     #         return HttpResponse(status=400)
-    #
-    #
-class AddLinkView(CreateView):
-    model = Links
-    fields = ['description', 'link']
-    success_url = 'links'
-
-

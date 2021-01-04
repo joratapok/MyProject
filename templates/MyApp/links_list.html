@@ -14,8 +14,12 @@
 
             <div class="greeting__linkrow row">
                 {% for theme in themes %}
-                <div class="title__linkrow">{{ theme.theme }}</div>
+                <div class="title__linkrow">
+                    {{ theme.theme }}
+                </div>
                 <div class="body__linkrow">
+
+<!-------------------------Table--------------------------->
 
                     <table>
                         <tr>
@@ -24,18 +28,60 @@
                         </tr>
 
                         {% for link in theme.child.all %}
+                            {% if not link.draft %}
                         <tr>
                             <td>{{ link.description }}</td>
-                            <td><a target="_blank" href="{{ link.link }}">{{ link.link }}</a></td>
+                            <td><a target="_blank" href="{{ link.link }}">{{ link.link|truncatechars:40 }}</a></td>
                         </tr>
+                            {% endif %}
                         {% endfor %}
-
                     </table>
+
+<!-------------------------FORM SUBMIT-------------------------->
+
+                    <form action="{% url 'add_link' %}" method="post">
+                        {% csrf_token %}
+                        <div class="link-input">
+                            <div class="title__link-input">
+                                Дополнить своим вариантом
+                            </div>
+                            <div class="cont__link-input">
+                                <div class="column__link-input">
+                                    <input type="text" name="description" required id="id_description" maxlength="250" placeholder="описание">
+                                </div>
+                                <div class="column__link-input">
+                                    <input type="text" name="link" maxlength="250" required id="id_link" placeholder="ссылка">
+                                    <div class="hidden">
+                                    <select name="theme" required id="id_theme">
+                                        <option value="{{ theme.pk }}" selected="selected">
+                                            {{ theme.theme }}{{ theme.id }}
+                                        </option>
+                                    </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="link-button">
+                            <button type="submit">Добавить</button>
+                        </div>
+
+                        {% for message in messages %}
+                            <li class="{{ message.tags }}">
+                                {% if theme.theme in message.tags %}
+                                    <div class="alert-warning">
+                                        <div class="alert-warning-box">
+                                            {{ message }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </form>
+
+
                 </div>
                 {% endfor %}
             </div>
-
-
         </div>
     </div>
 </div>

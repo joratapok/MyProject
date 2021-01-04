@@ -38,9 +38,11 @@
 
                     </div>
                     <div class="button-wrapper__but3">
-                        <div class="buttton__but3">
-                            <a href="{% url 'links_list' %}" class="btn btn1">Ссылки</a>
-                        </div>
+                        <a href="{% url 'links_list' %}" class="btn btn1">
+                            <div class="buttton__but3">
+                                Ссылки
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="but3-column__row but3">
@@ -57,9 +59,11 @@
 
                     </div>
                     <div class="button-wrapper__but3">
-                        <div class="buttton__but3">
-                            <a href="#" class="btn btn1">Доска</a>
-                        </div>
+                        <a href="#" class="btn btn1">
+                            <div class="buttton__but3">
+                                Доска
+                            </div>
+                        </a>
                     </div>
                 </div>
                 <div class="but3-column__row but3">
@@ -76,9 +80,11 @@
 
                     </div>
                     <div class="button-wrapper__but3">
-                        <div class="buttton__but3">
-                            <a href="{% url 'account_signup' %}" class="btn btn1">Авторизация</a>
-                        </div>
+                        <a href="{% url 'account_signup' %}" class="btn btn1">
+                            <div class="buttton__but3">
+                                Авторизация
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -144,11 +150,13 @@
                 {% if messages %}
                     <ul class="messages">
                         {% for message in messages %}
-                            <div class="alert-warning">
-                                <div class="alert-warning-box">
-                                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% if 'auth' in message.tags %}
+                                <div class="alert-warning">
+                                    <div class="alert-warning-box">
+                                       {{ message }}
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         {% endfor %}
                     </ul>
                 {% endif %}

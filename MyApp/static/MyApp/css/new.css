@@ -79,7 +79,9 @@ html, body {
   background-repeat: repeat;
   background-attachment: fixed;
 }
-
+input {
+  background-color: #E8F0FE;
+}
 /*-----------------TOP BUTTON-------------------*/
 #myBtn {
   display: none;
@@ -330,8 +332,8 @@ nav ul li a:hover {
   transition: 1s all ease;
 }
 
-.buttton__but3 a {
-  color: wheat;
+.buttton__but3 {
+  color: #d3d3d3;
 }
 
 .buttton__but3::before {
@@ -443,11 +445,15 @@ nav ul li a:hover {
   border: none;
   font-size: 20px;
   color: white;
-  padding: 16px 32px;
+  padding: 9px 32px;
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+}
+.button__form-text button:hover, .button__form-text button:focus {
+  background: #882244;
+  opacity: 0.8;
 }
 /*--------------------ERROR MESSAGES--------------------------*/
 .alert-warning {
@@ -554,6 +560,7 @@ nav ul li a:hover {
 /*------------------- FOOTER--------------------------- */
 .spacer{
   height: 220px;
+  margin-top: 10px;
 }
 .footer {
   background-color: #4c394f;
@@ -726,7 +733,7 @@ nav ul li a:hover {
 /* -----------------------SIGN UP----------------------- */
 .inlogin {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 60px auto 30px auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
   width: 60%; /* Could be more or less, depending on screen size */
   height: auto;
@@ -865,13 +872,20 @@ nav ul li a:hover {
 .ava-profile {
   width: 100%;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.ava-profile img {
-  margin: 10px 0 0 0;
+.cont__ava-profile {
+  width: 120px;
+  height: 120px;
+}
+
+.cont__ava-profile img {
   max-width: 120px;
   max-height: 120px;
 }
+
 
 .inputfile {
   width: 0.1px;
@@ -891,8 +905,6 @@ nav ul li a:hover {
   padding: 10px;
   border-radius: 8px;
   margin-top: 0;
-
-
 }
 
 .inputfile:focus + label,
@@ -906,23 +918,38 @@ nav ul li a:hover {
 	outline: -webkit-focus-ring-color auto 5px;
 }
 
+.body-profile label {
+  margin: 0 0 0 20px;
+  font-size: 16px;
+}
+
 /* -----------------LINKS--------------------- */
+.greeting__linkrow {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
 .title__linkrow {
   text-align: center;
   font-size: 30px;
+  font-weight: bold;
   margin: 20px 0 0 0;
 }
 .body__linkrow {
-  width: 100%;
+  width: 95%;
+  border-radius: 15px;
+  box-shadow: 0px 0px 18px 4px rgba(34, 60, 80, 0.3);
+  margin: 10px 0 10px 0;
+  overflow: hidden;
+  background-color: #fff;
 }
 table {
   border-collapse: collapse;
   border-spacing: 0;
-  width: 95%;
+  width: 100%;
   margin: auto;
   border: 1px solid #ddd;
-  box-shadow: 0px 0px 18px 4px rgba(34, 60, 80, 0.3);
-  border-radius: 8px;
 }
 
 th, td {
@@ -936,12 +963,73 @@ th:first-child, td:first-child {
 }
 
 tr:nth-child(even) {
-  background-color: #f2f2f2
+  background-color: #d3d3d3;
 }
 
 tr:nth-child(odd) {
   background-color: #fff
 }
+
+.link-input {
+  display: flex;
+  flex-direction: column;
+
+}
+.title__link-input {
+  font-size: 22px;
+  text-align: center;
+}
+
+.cont__link-input {
+  display: flex;
+}
+.column__link-input {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.link-input input {
+  font-size: 16px;
+  width: 95%;
+  padding: 5px 10px;
+  margin: 5px 10px 5px 10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+input:focus {
+  background-color: lightblue;
+}
+
+.link-button {
+  text-align: center;
+}
+
+.link-button button {
+  background-color: #4c394f;
+  color: white;
+  font-size: 18px;
+  padding: 8px 10px;
+  margin: 10px 10px 8px 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 30%;
+}
+
+.link-button button:hover, .link-button button:focus {
+  background: #882244;
+  opacity: 0.8;
+}
+.hidden {
+  display: none;
+}
+
+
+
+
 .testing {
   width: 300px;
   height: 300px;
