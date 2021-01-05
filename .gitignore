@@ -9,12 +9,18 @@
 __pycashe__
 env/
 
+
+prod_settings.py
+local_settings.py
+secret.py
+media/*
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 
-secret.py
+
 .Python
-env/
 build/
 develop-eggs/
 dist/

@@ -11,23 +11,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
 from pathlib import Path
-from MyProject.secret import *
+#from MyProject.secret import *
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -87,13 +74,12 @@ AUTHENTICATION_BACKENDS = [
 WSGI_APPLICATION = 'MyProject.wsgi.application'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST_USER = 'joratapok1@gmail.com'
+EMAIL_HOST_PASSWORD = 'Molotoboy1'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 DEFAULT_FROM_EMAIL = 'yosik'
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
 REST_FRAMEWORK = {
@@ -140,6 +126,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [STATIC_DIR]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
@@ -153,6 +143,13 @@ ACCOUNT_EMAIL_REQUIRED = True
 LOGIN_REDIRECT_URL = '/'
 SOCIALACCOUNT_EMAIL_VERIFICATION = False
 
+RECAPTCHA_PRIVATE_KEY = '6LehfxYaAAAAAJPX3P4VbBS_YB-rtG8vU3P4cu_o'
 RECAPTCHA_PUBLIC_KEY = '6LehfxYaAAAAAGz6NGPoI03A0vhiXsCAutn13x3W'
 RECAPTCHA_DEFAULT_ACTION = 'generic'
 RECAPTCHA_SCORE_THRESHOLD = 0.5
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    from .prod_settings import *
