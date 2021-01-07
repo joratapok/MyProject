@@ -73,14 +73,26 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'MyProject.wsgi.application'
 
-
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'joratapok1@gmail.com'
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_REDIRECT_URL = "/"
+
+
+#SMTP SETTINGS
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'joratapok1@gmail.com'
+# ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 5  # Определяет срок действия писем с подтверждением по электронной почте
+# ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Когда установлено «mandatory», пользователь блокируется от входа, пока адрес электронной почты не будет подтвержден.
+# ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 2  # Количество попыток не удачного ввода логина и пароля. После пользователь блокируется.
+# ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300  # Время блокировки пользователя в секундах после количества не удачного ввода логина и пароля.
+# ACCOUNT_EMAIL_REQUIRED = True
+LOGIN_REDIRECT_URL = '/'
+SOCIALACCOUNT_EMAIL_VERIFICATION = False
 
 
 REST_FRAMEWORK = {
@@ -133,13 +145,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 SITE_ID = 1
 
-ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 5  # Определяет срок действия писем с подтверждением по электронной почте
-ACCOUNT_EMAIL_VERIFICATION = 'mandatory'  # Когда установлено «mandatory», пользователь блокируется от входа, пока адрес электронной почты не будет подтвержден.
-ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 2  # Количество попыток не удачного ввода логина и пароля. После пользователь блокируется.
-ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 300  # Время блокировки пользователя в секундах после количества не удачного ввода логина и пароля.
-ACCOUNT_EMAIL_REQUIRED = True
-LOGIN_REDIRECT_URL = '/'
-SOCIALACCOUNT_EMAIL_VERIFICATION = False
+
 
 
 RECAPTCHA_PUBLIC_KEY = '6LehfxYaAAAAAGz6NGPoI03A0vhiXsCAutn13x3W'
