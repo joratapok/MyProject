@@ -46,3 +46,11 @@ nosetests.xml
 coverage.xml
 *.cover
 .hypothesis/
+
+.bundle
+.DS_Store
+db/*.sqlite3
+log/*.log
+tmp/
+public/system/images/
+public/system/avatars/
