@@ -940,6 +940,10 @@ input:focus {
   .ava__message img {
   width: 100%;
   }
+  th, td {
+  font-size: 14px;
+  padding: 6px;
+  }
 }
 @media (max-width: 767px) {
   .header__body {
