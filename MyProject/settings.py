@@ -73,11 +73,14 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'MyProject.wsgi.application'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-DEFAULT_FROM_EMAIL = 'yosik'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'joratapok1@gmail.com'
 
 
 REST_FRAMEWORK = {
