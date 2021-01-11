@@ -84,7 +84,9 @@ input {
 }
 /*-----------------TOP BUTTON-------------------*/
 #myBtn {
-  display: none;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
   bottom: 80px;
   right: 15px;
@@ -99,7 +101,6 @@ input {
   padding: 15px;
   border-radius: 50%;
   transition: 1s;
-
 }
 
 #myBtn:hover {
@@ -107,6 +108,11 @@ input {
 }
 .up_but {
   width: 20px;
+}
+
+#myBtn.show-topbtn {
+  visibility: visible;
+  opacity: 1;
 }
 
 /* --------------MENU----------------- */
