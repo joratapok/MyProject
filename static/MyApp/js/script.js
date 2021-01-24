@@ -6,18 +6,15 @@ $(document).ready(function() {
 });
 
 
-var mybutton = document.getElementById("myBtn");
-window.onscroll = function() {scrollFunction()};
+var mybutton = $("#myBtn");
 
-function scrollFunction() {
-  if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-    mybutton.style.display = "block";
-    mybutton.style.opacity = "0.9";
+$(window).scroll(function() {
+  if ($(window).scrollTop() > 150) {
+    mybutton.addClass('show-topbtn');
   } else {
-    mybutton.style.display = "none";
-    mybutton.style.opacity = "0";
+    mybutton.removeClass('show-topbtn');
   }
-}
+});
 
 function topFunction() {
   document.body.scrollTop = 0;
