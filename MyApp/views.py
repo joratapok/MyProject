@@ -22,6 +22,9 @@ class CommentsView(ListView):
 class FishView(TemplateView):
     template_name = 'MyApp/fishpage.html'
 
+class JsView(TemplateView):
+    template_name = 'MyApp/js.html'
+
 
 class UpdateProfileView(UpdateView):
     model = User
@@ -81,7 +84,6 @@ class AddLinkView(CreateView):
 
     def form_valid(self, form):
         if self.request.user.is_authenticated:
-            print(form.cleaned_data['theme'])
             messages.add_message(self.request, messages.INFO,
                                 'Ваша ссылка будет опубликована после проверки администратора', extra_tags=form.cleaned_data['theme'])
             return super().form_valid(form)
